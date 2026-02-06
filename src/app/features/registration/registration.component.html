@@ -1,0 +1,156 @@
+<div class="container">
+  <header class="header">
+    <h1 class="title">User Registration Portal</h1>
+    <p class="subtitle">Complete the form below to register a new user account</p>
+
+    <button
+      mat-raised-button
+      color="accent"
+      class="view-btn"
+      (click)="openRecords()"
+      aria-label="View existing records"
+    >
+      <mat-icon>list_alt</mat-icon>
+      View Existing Records
+    </button>
+  </header>
+
+  <mat-card class="form-container elevation-z4">
+    <mat-card-header class="form-header">
+      <mat-card-title>
+        <h2 class="form-title">Registration Form</h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Please fill in all required fields marked with an asterisk (*)
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <form [formGroup]="registrationForm" (ngSubmit)="submit()" class="registration-form">
+
+        <div class="grid">
+          <!-- Personal Information Section -->
+          <div class="section">
+            <h3 class="section-title">
+              <mat-icon>person</mat-icon>
+              Personal Information
+            </h3>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>First Name *</mat-label>
+              <input matInput formControlName="firstName" required />
+              <mat-icon matPrefix>person</mat-icon>
+              <mat-error *ngIf="registrationForm.get('firstName')?.touched && registrationForm.get('firstName')?.invalid">
+                First name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Last Name *</mat-label>
+              <input matInput formControlName="lastName" required />
+              <mat-icon matPrefix>person_outline</mat-icon>
+              <mat-error *ngIf="registrationForm.get('lastName')?.touched && registrationForm.get('lastName')?.invalid">
+                Last name is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Email *</mat-label>
+              <input matInput type="email" formControlName="email" required />
+              <mat-icon matPrefix>email</mat-icon>
+              <mat-error *ngIf="registrationForm.get('email')?.touched && registrationForm.get('email')?.invalid">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Phone Number</mat-label>
+              <input matInput type="tel" formControlName="phone" />
+              <mat-icon matPrefix>phone</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+              <mat-icon matPrefix>calendar_today</mat-icon>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Gender</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option *ngFor="let gender of genders" [value]="gender">
+                  {{ gender }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matPrefix>wc</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <!-- Address Information Section -->
+          <div class="section">
+            <h3 class="section-title">
+              <mat-icon>location_on</mat-icon>
+              Address Information
+            </h3>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="address" />
+              <mat-icon matPrefix>home</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>City</mat-label>
+              <input matInput formControlName="city" />
+              <mat-icon matPrefix>location_city</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>State / Province</mat-label>
+              <input matInput formControlName="state" />
+              <mat-icon matPrefix>map</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+              <mat-label>Country</mat-label>
+              <input matInput formControlName="country" />
+              <mat-icon matPrefix>public</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-divider class="form-divider"></mat-divider>
+
+        <div class="form-actions">
+          <button
+            mat-stroked-button
+            type="button"
+            class="cancel-btn"
+            (click)="resetForm()"
+            aria-label="Clear form"
+          >
+            <mat-icon>clear</mat-icon>
+            Clear Form
+          </button>
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="registrationForm.invalid"
+            class="submit-btn"
+            aria-label="Submit registration form"
+          >
+            <mat-icon>check_circle</mat-icon>
+            Submit Registration
+          </button>
+        </div>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

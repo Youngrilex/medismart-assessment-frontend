@@ -1,0 +1,224 @@
+@use '@angular/material' as mat;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  .title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.view-btn {
+  margin: 1rem auto;
+  padding: 0.8rem 2rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  mat-icon {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+
+  .form-header {
+    padding: 2rem 2rem 1rem;
+    background: linear-gradient(135deg, #d46942 0%, #d43e07 100%);
+    color: white;
+
+    .form-title {
+      color: white;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    mat-card-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+    }
+  }
+}
+
+.registration-form {
+  padding: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+
+  .section-title {
+    color: #2d3748;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    mat-icon {
+      color: #d5430e;
+    }
+  }
+}
+
+.form-field {
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  .mat-form-field-wrapper {
+    border-radius: 8px;
+  }
+
+  .mat-form-field-outline {
+    background: white;
+    border-radius: 8px;
+  }
+
+  mat-icon[matPrefix] {
+    margin-right: 12px;
+    color: #64748b;
+  }
+}
+
+.form-divider {
+  margin: 2.5rem 0;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+
+  .cancel-btn {
+    padding: 0.7rem 1.8rem;
+    border-radius: 8px;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+
+  .submit-btn {
+    padding: 0.7rem 2.2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+
+    &:not([disabled]):hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(235, 156, 37, 0.3);
+    }
+
+    &[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .form-container {
+    .form-header {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  .registration-form {
+    padding: 1.5rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+}
+
+// Material form field customization
+::ng-deep {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: white;
+    border-radius: 8px;
+    padding: 0.75em 0.75em 0 0.75em;
+  }
+
+  .mat-form-field-appearance-fill .mat-form-field-underline::before {
+    background-color: #e2e8f0;
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: #d5430e;
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #d5430e;
+  }
+
+  .mat-primary .mat-option.mat-selected {
+    color: #d5430e;
+  }
+
+  .mat-datepicker-toggle-active {
+    color: #d5430e;
+  }
+}
+
+
